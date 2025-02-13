@@ -8,13 +8,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <style>            
            #imatges { position:relative; top:-450px; left:318px; }
            #disfraz { position:relative; top:-190px; left:180px; }
-           #aleman  { position:relative; top:-500px; left:345px; }
-           #catalan { position:relative; top:-500px; left:346px; }
-           #español { position:relative; top:-500px; left:347px; }
+           #aleman  { position:relative; top:-500px; left:344px; }
+           #catalan { position:relative; top:-500px; left:340px; }
+           #español { position:relative; top:-500px; left:346px; }
            #frances { position:relative; top:-500px; left:348px; }
-           #ingles  { position:relative; top:-500px; left:349px; }
-           #italiano { position:relative; top:-500px; left:350px; }
-           #keyboard { position:relative; top:-500px; left:351px; }
+           #ingles  { position:relative; top:-500px; left:350px; }
+           #italiano { position:relative; top:-500px; left:352px; }
+           #keyboard { position:relative; top:-500px; left:354px; }
         </style>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,6 +102,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
                 document.getElementById("ahorcado_1").hidden = true;
                 document.getElementById("ahorcado_0").hidden = true;
                 document.getElementById("ahorcado").hidden = true;
+                setInterval(timer,1000);
             }           
             function MostrarImg() {
                 switch(vides) {
@@ -133,12 +134,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
                         document.getElementById("ahorcado_1").hidden = true;
                         break;
                 }           
-	    function timer(){
+            } 
+            function timer(){
 		seconds=seconds+1;
 		document.getElementById("counter").innerHTML=seconds;
 	    }
-	    setInterval(timer,1000);
-                } 
         </script>
     </head>
     <body onload="AmagaImg()" style="background-image: url('img/Desert.png');
@@ -173,14 +173,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
              style="top:-500px;left:350px "> 
         <img src="img/de.png" alt="" id="aleman"
              style="width: ;height: ">
-        <img src="img/es.png" alt="" id="español"
+        <a href="https://melodic--dolphin--d7ae29-netlify-app.translate.goog/versioprealpha?_x_tr_sl=ca&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=wapp"><img src="img/es.png" alt="" id="español"
              style="width: ;height: ">
+            
         <img src="img/fr.png" alt="" id="frances"
              style="width: ;height: ">       
-        <img src="img/gb.png" alt=""id="ingles"
-             style="width: ;height: ">      
-        <img src="img/it.png" alt="" id="italiano"
+        
+        <a href="https://melodic--dolphin--d7ae29-netlify-app.translate.goog/versioprealpha?_x_tr_sl=ca&_x_tr_tl=en&_x_tr_hl=es&_x_tr_pto=wapp"><img src="img/gb.png" alt="" id="ingles"
+             style="width: ;height: "></a> 
+        
+        <a href="https://melodic--dolphin--d7ae29-netlify-app.translate.goog/versioprealpha?_x_tr_sl=ca&_x_tr_tl=it&_x_tr_hl=es&_x_tr_pto=wapp"><img src="img/it.png" alt="" id="italiano"
              style="width: ;height: ">
+            
         <img src="img/keyboard.png" alt="" id="keyboard"
              style="width: :height: ">
         <div id="imatges">
@@ -213,6 +217,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <audio id="boomcloud"><source src="aud/boom_cloud.mp3" type="audio/mpeg"></audio>
         <audio id="cheer"><source src="aud/cheer.mp3" type="audio/mpeg"></audio>
         <audio id="catfight"><source src="aud/cat-fight.mp3" type="audio/mpeg"></audio>
+        <audio id="mystery"><source src="aud/mystery.mp3" type="audio/mpeg"></audio>
+        
+            
+            
+            
     </div>
     </body>
 </html>
