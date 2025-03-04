@@ -20,16 +20,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script>
             //variables globals
-            var paraula = [];
+            //llista de paraules per al joc i les pistes asociades
+            //Comprovam si la lletra es troba a la paraula.
+            var Paraula = [];
             var vides=7;
             var letras = ["_","_","_","_","_","_","_"];
             var seconds=0;
-            //llista de paraules per al joc i les pistes asociades
-            //Comprovam si la lletra es troba a la paraula.
             var paraules = ["cordes", "fetge", "forca", "jutge", "jutjat", "mengen", "penjat", "quinta", "setze"];
             var pistes = ["A la quinta forca", "A ca un penjat", "no hi anomenis cordes", "setze judges d`un jutjat mengen fetge d´un penjat"];
             var paraulapistes = [1, 2, 0, 2, 2, 2, 1, 0, 2];
-            
             //escull una paraula aleatori
             var aleatori = Math.floor(Math.random() * paraules.length);
             var paraula = paraules[aleatori];
@@ -37,13 +36,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
             
             //Marcam cada lletra amb un "_"
             for (var i=0; i < paraula.length; i++) {
-                paraula[i] = "_";
-            } 
+                Paraula[i] = "_";
+            }                     
             
             function comprovar() {
-                letra=document.getElementById("letra").value;
-            
-                               
+                letra=document.getElementById("letra").value;                                                             
                 // Convertim les majúscules a minúscules {
                 letra = letra.toLowerCase();
                 // llevar los acentos y las dieresis
@@ -73,15 +70,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
                         letra="u";
                         break;
                 }        
+                
                 //Comprovar si has encertado o no        
                     window.alert("comprovar");
-                if ((letra>="a") && (letra<="m")) {
+                if (paraula.includes(letra)) {
                     window.alert("has encertado");
                     // Afegim lletra a Paraula i actualitzam a pantalla.
-                    paraula = paraula + letra + " ";
-                    document.getElementById("paraula").innerHTML= paraula;
+                    // paraula = paraula + letra + " ";
+                    var pos = paraula.indexOf(letra);
+                    Paraula[pos] = letra;
+                    for (var i=pos++; i < paraula.length; i++) {
+                        if (Paraula[i] === letra) {
+                            Paraula[i] = letra;
+                    }
+                }
+                    document.getElementById("paraula").innerHTML = Paraula;
                     document.getElementById("miau").play();
-                } else {
+               } else {
+                    // if (lletra.indexOf(lletra) !== -1) {     }
                     window.alert("has fallado");
                     letras = letras + letra + " ";
                     document.getElementById("letras").innerHTML= letras;
@@ -244,6 +250,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
 <!--
 mides del moix style="width:86px;height:90px"
 if !confirm('Anam a la quinta forca?')
-
 document.body.style.backgroundImage = "url('img/fondo1.png')";
+letra[7 - 6] = letra;
 -->
