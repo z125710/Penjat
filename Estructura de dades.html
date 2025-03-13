@@ -5,23 +5,57 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
 -->
 <html>
     <head>
-        <style>            
+        <style>    
+            html {
+        background:#222;
+        margin:0;
+        width:640px;
+        height:480px;
+    }
+
+    body {
+        background:linear-gradient(#aaa 0, #ddd 10px, #fff 55px);
+        border:1px solid black;
+        padding:10px 20px;
+        box-shadow:5px 0px 30px #000;
+        border-radius:8px;
+        margin:0;
+        width:640px;
+        height:480px;
+    }
+
+    h1, a {
+        background: linear-gradient(#aaa 0, #ddd 10px, #fff 55px);
+        border: 1px solid black;
+        padding: 1px 1px;
+        box-shadow: 5px 0px 30x #000;
+        border-radius: 8px;
+        text-align: center;
+        max-width: 600px;
+    }
+
+    h2 {
+        color: white;
+    }
            #imatges { position:relative; top:-450px; left:318px; }
            #disfraz { position:relative; top:-190px; left:180px; }
-           #aleman  { position:relative; top:-500px; left:344px; }
-           #catalan { position:relative; top:-500px; left:340px; }
-           #español { position:relative; top:-500px; left:346px; }
-           #frances { position:relative; top:-500px; left:348px; }
-           #ingles  { position:relative; top:-500px; left:350px; }
-           #italiano { position:relative; top:-500px; left:352px; }
-           #keyboard { position:relative; top:-500px; left:354px; }
+           #aleman  { position:relative; top:-500px; left:343px; }
+           #catalan { position:relative; top:-500px; left:345px; }
+           #español { position:relative; top:-500px; left:347px; }
+           #frances { position:relative; top:-500px; left:349px; }
+           #ingles  { position:relative; top:-500px; left:351px; }
+           #italiano { position:relative; top:-500px; left:353px; }
+           #keyboard { position:relative; top:-500px; left:355px; }
+           #Button2 { position:relative; top:-3000px; left:150px; }
+           
+           
         </style>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script>
             //variables globals
             //llista de paraules per al joc i les pistes asociades
-            //Comprovam si la lletra es troba a la paraula.
+            //Comprovam si la letra es troba a la paraula.
             var Paraula = [];
             var vides=7;
             var letras = ["_","_","_","_","_","_","_"];
@@ -34,7 +68,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
             var paraula = paraules[aleatori];
             var pista = pistes[paraulespistes[aleatori]];
             
-            //Marcam cada lletra amb un "_"
+            //Marcam cada letra amb un "_"
             for (var i=0; i < paraula.length; i++) {
                 Paraula[i] = "_";
             }                     
@@ -75,19 +109,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
                     window.alert("comprovar");
                 if (paraula.includes(letra)) {
                     window.alert("has encertado");
-                    // Afegim lletra a Paraula i actualitzam a pantalla.
+                    // Afegim letra a Paraula i actualitzam a pantalla.
                     // paraula = paraula + letra + " ";
-                    var pos = paraula.indexOf(letra);
+                    var pos = paraula.indexOf(letra);                  
                     Paraula[pos] = letra;
                     for (var i=pos++; i < paraula.length; i++) {
-                        if (Paraula[i] === letra) {
-                            Paraula[i] = letra;
-                    }
+                        if (paraula[i] === letra) {
+                            Paraula[i] = letra;                                           
+                }
                 }
                     document.getElementById("paraula").innerHTML = Paraula;
                     document.getElementById("miau").play();
                } else {
-                    // if (lletra.indexOf(lletra) !== -1) {     }
+                    // if (letra.indexOf(letra) !== -1) {     }
                     window.alert("has fallado");
                     letras = letras + letra + " ";
                     document.getElementById("letras").innerHTML= letras;
@@ -176,11 +210,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
             <a href="#about"></a>
             <a href="#contact"></a>
         </div>
-        <input id="letra" type="text" placeholder="Escriu una lletra minúscula">
+        <input id="letra" type="text" placeholder="Escriu una letra minúscula">
         <button id="button" type="button" onclick="comprovar()">Comprovar</button> 
+        
             <h2>PARAULA</h2>
         <br>
-        <div id="paraula">-------</div>
+        <div id="paraula">-------</div> <button id="button2" type="button" onclick="Pista()">Pista</button>
         <br>
             <h2>VIDES</h2>
         <br>
@@ -196,23 +231,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <img src="img/disfraz3.png" alt="" id="disfraz"
              style="width:86px;height:90px">
         <img src="img/ca.png" alt="" id="catalan"
-             style="top:-500px;left:350px "> 
+             style="width:20px;height:20px "> 
         <img src="img/de.png" alt="" id="aleman"
-             style="width: ;height: ">
+             style="width:20px ;height:20px ">
         <a href="https://melodic--dolphin--d7ae29-netlify-app.translate.goog/versioprealpha?_x_tr_sl=ca&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=wapp"><img src="img/es.png" alt="" id="español"
-             style="width: ;height: ">
-            
+             style="width:20px ;height:20px ">            
         <img src="img/fr.png" alt="" id="frances"
-             style="width: ;height: ">       
+             style="width:20px ;height:20px ">       
         
         <a href="https://melodic--dolphin--d7ae29-netlify-app.translate.goog/versioprealpha?_x_tr_sl=ca&_x_tr_tl=en&_x_tr_hl=es&_x_tr_pto=wapp"><img src="img/gb.png" alt="" id="ingles"
-             style="width: ;height: "></a> 
+             style="width:20px ;height:20px "></a> 
         
         <a href="https://melodic--dolphin--d7ae29-netlify-app.translate.goog/versioprealpha?_x_tr_sl=ca&_x_tr_tl=it&_x_tr_hl=es&_x_tr_pto=wapp"><img src="img/it.png" alt="" id="italiano"
-             style="width: ;height: ">
+             style="width:20px ;height:20px ">
             
         <img src="img/keyboard.png" alt="" id="keyboard"
-             style="width: :height: ">
+             style="width:20px ;height:20px ">
         <div id="imatges">
         <img src="img/ahorcado_0.png" id="ahorcado_0"
              width="280" height="270"
@@ -245,6 +279,74 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <audio id="catfight"><source src="aud/cat-fight.mp3" type="audio/mpeg"></audio>
         <audio id="mystery"><source src="aud/mystery.mp3" type="audio/mpeg"></audio>
     </div>
+    <div id="Teclat" translate="no">
+            <table><strong>
+                <tr>
+                  <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="q" onclick="document.getElementById('letra').value = 'q';">q</button>
+                    <button id="w" onclick="document.getElementById('letra').value = 'w';">w</button>
+                    <button id="e" onclick="document.getElementById('letra').value = 'e';">e</button>
+                    <button id="r" onclick="document.getElementById('letra').value = 'r';">r</button>
+                    <button id="t" onclick="document.getElementById('letra').value = 't';">t</button>
+                    <button id="y" onclick="document.getElementById('letra').value = 'y';">y</button>
+                    <button id="u" onclick="document.getElementById('letra').value = 'u';">u</button>
+                    <button id="i" onclick="document.getElementById('letra').value = 'i';">i</button>
+                    <button id="o" onclick="document.getElementById('letra').value = 'o';">o</button>
+                    <button id="p" onclick="document.getElementById('letra').value = 'p';">p</button>
+                    <!--
+                    <button id="agut" onclick="alert('Sense vocals accentuades!');" 
+                            style="color:red" title="Accent Agut">´</button>
+                    -->
+                    <button id="retro" onclick="Retroces();;" title="BACKSPACE">←</button>
+                  </td>          
+                </tr>
+                <tr>
+                  <td>
+                    &nbsp;&nbsp;
+                    <button id="a" onclick="document.getElementById('letra').value = 'a';">a</button>
+                    <button id="s" onclick="document.getElementById('letra').value = 's';">s</button>
+                    <button id="d" onclick="document.getElementById('letra').value = 'd';">d</button>
+                    <button id="f" onclick="document.getElementById('letra').value = 'f';">f</button>
+                    <button id="g" onclick="document.getElementById('letra').value = 'g';">g</button>
+                    <button id="h" onclick="document.getElementById('letra').value = 'h';">h</button>
+                    <button id="j" onclick="document.getElementById('letra').value = 'j';">j</button>
+                    <button id="k" onclick="document.getElementById('letra').value = 'k';">k</button>
+                    <button id="l" onclick="document.getElementById('letra').value = 'l';">l</button>
+                    <button id="ñ" onclick="document.getElementById('letra').value = 'ñ';" 
+                            style="color:blue">ñ</button>
+                    <!--
+                    <button id="dieresi" onclick="alert('Sense vocals amb dièrsi!');" 
+                            style="color:red" title="Dièresi">¨</button>
+                    -->
+                    <button id="intro" onclick="Comprovar();" title="ENTER">┘</button>
+                  </td>          
+                </tr>
+                <tr>
+                  <td>
+                    <button id="shift" onclick="alert('Només lletres minúscules!');" 
+                            style="color:red" title="SHIFT">↑</button>
+                    <button id="z" onclick="document.getElementById('letra').value = 'z';">z</button>
+                    <button id="x" onclick="document.getElementById('letra').value = 'x';">x</button>
+                    <button id="c" onclick="document.getElementById('letra').value = 'c';">c</button>
+                    <button id="v" onclick="document.getElementById('letra').value = 'v';">v</button>
+                    <button id="b" onclick="document.getElementById('letra').value = 'b';">b</button>
+                    <button id="n" onclick="document.getElementById('letra').value = 'n';">n</button>
+                    <button id="m" onclick="document.getElementById('letra').value = 'm';">m</button>
+                    <button id="ç" onclick="document.getElementById('letra').value = 'ç';" 
+                            style="color:blue">ç</button>
+                    <button id="volat" onclick="document.getElementById('letra').value = '·';" 
+                            style="color:blue" title="Punt Volat">·</button>
+                    <button id="guio" onclick="document.getElementById('letra').value = '-';" 
+                            style="color:blue" title="Guionet">-</button>
+                    <!--
+                    <button id="greu" onclick="alert('Sense vocals accentuades!');" 
+                            style="color:red" title="Accent Greu">`</button>
+                    -->
+                  </td>          
+                </tr>
+            </strong></table>
+        </div>
     </body>
 </html>
 <!--
@@ -252,4 +354,24 @@ mides del moix style="width:86px;height:90px"
 if !confirm('Anam a la quinta forca?')
 document.body.style.backgroundImage = "url('img/fondo1.png')";
 letra[7 - 6] = letra;
+ Paraula[pos] = letra;
+                    }else{
+                    Lletres[7 - vides] =letra;
+                }
+<button id="teclat" onclick="document.getElementById('teclat').hidden =
+!document.getElementById('teclat').hidden; title="mostra o amaga">
+<img src="img/keyboard.png" alt="teclat">
+</button>
+
+<button id="sons" title="On / Off" 
+Onclick="document.getElementById('off').hidden=
+         document.getElementById('on').hidden;
+         document.getElementById('on').hidden=
+         !document.getElementById('off').hidden=>
+         <img src="img/on.png" id="on">
+         <img src="img/off.png" id="off" hidden>
+         </button>
+
+
+
 -->
