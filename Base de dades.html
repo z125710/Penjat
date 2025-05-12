@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <style>    
+            html {
+        background:#222;
+        margin:0;
+        width:640px;
+        height:480px;
+    }
+
+    body {
+        background:linear-gradient(#aaa 0, #ddd 10px, #fff 55px);
+        border:1px solid black;
+        padding:10px 20px;
+        box-shadow:5px 0px 30px #000;
+        border-radius:8px;
+        margin:0;
+        width:640px;
+        height:480px;
+    }
+
+    h1, a {
+        background: linear-gradient(#aaa 0, #ddd 10px, #fff 55px);
+        border: 1px solid black;
+        padding: 1px 1px;
+        box-shadow: 5px 0px 30x #000;
+        border-radius: 8px;
+        text-align: center;
+        max-width: 600px;
+    }
+
+    h2 {
+        color: white;
+    }
+           #imatges { position:relative; top:-450px; left:318px; }
+           #disfraz { position:relative; top:-190px; left:180px; }
+           #aleman  { position:relative; top:-500px; left:343px; }
+           #catalan { position:relative; top:-500px; left:345px; }
+           #es      { position:relative; top:-500px; left:347px; }
+           #en      { position:relative; top:-500px; left:349px; }
+           #ca      { position:relative; top:-500px; left:351px; }
+           #italiano { position:relative; top:-500px; left:353px; }
+           #keyboard { position:relative; top:-500px; left:355px; }
+           #Button2 { position:relative; top:-3000px; left:150px; }
+           
+           
+        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/alasql.js" type="text/javascript"></script>
+        <script src="js/sql.js" type="text/javascript"></script>
+        <script>
+            // Diferents idiomes per la GUI
+    const Idiomes_dft = [
+        {
+            "IdIdioma": "ca",
+            "Titol": "Versió amb Estructures de Dades Joc del Penjat",
+            "Versio": "Versió β Joc del Penjat",
+            "Input": "Escriu una lletra minúscula",
+            "Pregunta": "Anam a la quinta forca?",
+            "Comprovar": "Comprovar",
+            "Paraula": "Paraula:",
+            "Sopes": "Demanes sopes?",
+            "Pista": "Pista",
+            "Vides": "Vides:",
+            "Moix": "Un moix en té set?",
+            "Lletres": "Lletres:",
+            "Ets": "Ets de lletres?",
+            "URLpistes": "URLpistes:",
+            "Dita": "Dita",
+            "Dita1": "A la quinta forca, ",
+            "Dita2": "A ca un penjat, no hi anomenis cordes, ",
+            "Dita3": "Setze jutges d'un jutjat mengen fetge d'un penjat, …",
+            "Credits": "Crèdits:",
+            "YouTube": "Joc Penjat on Scratch",
+            "Wikis": "Penjat",
+            "Idioma": "en Català",
+            "Diccionari": "Diccionari",
+            "Teclat": "Mostra o Amaga",
+            "Incorrecte": "Caràcter incorrecte!",
+            "Repetida": "Lletra repetida!",
+            "Encertat": "Has encertat!",
+            "Guanyat": "i has guanyat!",
+            "Fallat": "Has fallat!",
+            "Perdut": "i has perdut!",
+            "Descansi": "En pau descansi – RIP!",
+            "Puntuacio": "Puntuació:"
+        },
+        {
+            "IdIdioma": "es",
+            "Titol": "Versión con Estructuras de Datos Juego del Ahorcado",
+            "Versio": "Versión β Juego del Ahorcado",
+            "Input": "Escribe una letra minúscula",
+            "Pregunta": "Vamos al quinto pino?",
+            "Comprovar": "Comprobar",
+            "Paraula": "Palabra:",
+            "Sopes": "Te rindes?",
+            "Pista": "Pista",
+            "Vides": "Vidas:",
+            "Moix": "Un gato tiene siete?",
+            "Lletres": "Letras:",
+            "Ets": "Eres de letras?",
+            "URLpistes": "URLpistas:",
+            "Dita": "Dicho",
+            "Dita1": "Al quinto pino, ",
+            "Dita2": "En casa de un ahorcado, no hables de cuerdas,",
+            "Dita3": "Dieciséis jueces de un juzgado comen hígado de un ahorcado, …",
+            "Credits": "Crèditos:",
+            "YouTube": "Juego Ahorcado on Scratch",
+            "Wikis": "Ahorcado",
+            "Idioma": "en Español",
+            "Diccionari": "Diccionario",
+            "Teclat": "Muestra o Esconde",
+            "Incorrecte": "Carácter incorrecto!",
+            "Repetida": "Letra repetida!",
+            "Encertat": "Has acertado!",
+            "Guanyat": "y has ganado!",
+            "Fallat": "Has fallado!",
+            "Perdut": "y has perdido!",
+            "Descansi": "En paz descanse - RIP!",
+            "Puntuacio": "Puntuación:"
+        },
+        {
+            "IdIdioma": "en",
+            "Titol": "Hangman Game Data Structures Version",
+            "Versio": "Hangman Game β Version",
+            "Input": "Write a lowercase letter",
+            "Pregunta": "Are we going to the boondocks?",
+            "Comprovar": "Check it",
+            "Paraula": "Word:",
+            "Sopes": "You give up?",
+            "Pista": "Clue",
+            "Vides": "Lives:",
+            "Moix": "A cat has seven?",
+            "Lletres": "Letters:",
+            "Ets": "Are you in liberal arts?",
+            "URLpistes": "URLclues:",
+            "Dita": "Saying",
+            "Dita1": "To the boondocks,",
+            "Dita2": "In a hanged man's home, don't talk about ropes,",
+            "Dita3": "Sixteen judges of a court eat the liver of a hangman, …",
+            "Credits": "Credits:",
+            "YouTube": "Hangman Game on Scratch",
+            "Wikis": "Hangman",
+            "Idioma": "in English",
+            "Diccionari": "Dictionary",
+            "Teclat": "Show or Hide",
+            "Incorrecte": "Wrong character!",
+            "Repetida": "Repeated letter!",
+            "Encertat": "You're right!",
+            "Guanyat": "and you have won!",
+            "Fallat": "You have failed!",
+            "Perdut": "and you have lost!",
+            "Descansi": "Rest in peace - RIP!",
+            "Puntuacio": "Score:"
+        },
+        {
+            "IdIdioma": "fr",
+            "Titol": "Version avec Base de Données Jeu du Pendu",
+            "Versio": "Version γ Jeu du Pendu",
+            "Input": "Ecrire une lettre minuscule",
+            "Pregunta": "Allons-nous aux banlieue?",
+            "Comprovar": "Vérifier",
+            "Paraula": "Mot:",
+            "Sopes": "Tu abandonnes?",
+            "Pista": "Indice",
+            "Vides": "Vies:",
+            "Moix": "Un chat en a sept?",
+            "Lletres": "Lettres:",
+            "Ets": "Êtes-vous dans les lettres?",
+            "URLpistes": "URLindices:",
+            "Dita": "Dit",
+            "Dita1": "Aux banlieue,",
+            "Dita2": "Chez un pendu, ne parle pas de cordes,",
+            "Dita3": "Seize juges d'un tribunal mangent le foie d'un pendu, …",
+            "Credits": "Crédits:",
+            "YouTube": "Jeu Pendu sur Scratch",
+            "Wikis": "Pendu",
+            "Idioma": "en Français",
+            "Diccionari": "Dictionnaire",
+            "Teclat": "Afficher ou Masquer",
+            "Incorrecte": "Caractère non valide!",
+            "Repetida": "Lettre répétée!",
+            "Encertat": "Vous as raison!",
+            "Guanyat": "et vous avez gagné!",
+            "Fallat": "Vous avez échoué!",
+            "Perdut": "et vous avez perdu!",
+            "Descansi": "Repose en paix - RIP!",
+            "Puntuacio": "Score:"
+        }
+    ]
+    var Idiomes = Idiomes_dft; 
+    var Idioma = Idiomes.find(Idioma => Idioma.IdIdioma == "ca");
+    
+            //variables globals
+            //llista de paraules per al joc i les pistes asociades
+            //Comprovam si la letra es troba a la paraula.
+            var Paraula = [];
+            var vides=7;
+            var letras = ["_","_","_","_","_","_","_"];
+            var seconds=0;
+            var paraules = ["cordes", "fetge", "forca", "jutge", "jutjat", "mengen", "penjat", "quinta", "setze"];
+            var pistes = ["A la quinta forca", "A ca un penjat", "no hi anomenis cordes", "setze judges d`un jutjat mengen fetge d´un penjat"];
+            var paraulapistes = [1, 2, 0, 2, 2, 2, 1, 0, 2];
+            //escull una paraula aleatori
+            var aleatori = Math.floor(Math.random() * paraules.length);
+            var paraula = paraules[aleatori];
+            var pista = pistes[paraulespistes[aleatori]];
+            
+            //Marcam cada letra amb un "_"
+            for (var i=0; i < paraula.length; i++) {
+                Paraula[i] = "_";
+            }                     
+            
+            function comprovar() {
+                letra=document.getElementById("letra").value;                                                             
+                // Convertim les majúscules a minúscules {
+                letra = letra.toLowerCase();
+                // llevar los acentos y las dieresis
+                switch(letra) {
+                    case "à":
+                    case "á":
+                        letra="a";
+                        break;
+                
+                    case "é":
+                    case "è":
+                        letra="e";
+                        break;  
+                        
+                    case "í":
+                    case "ï":
+                        letra="i";
+                        break;
+                        
+                    case "ó":
+                    case "ò":
+                        letra="o";
+                        break;
+                        
+                    case "ú":
+                    case "ü":
+                        letra="u";
+                        break;
+                }        
+                
+                //Comprovar si has encertado o no        
+                    window.alert("comprovar");
+                if (paraula.includes(letra)) {
+                    window.alert("has encertado");
+                    // Afegim letra a Paraula i actualitzam a pantalla.
+                    // paraula = paraula + letra + " ";
+                    var pos = paraula.indexOf(letra);                  
+                    Paraula[pos] = letra;
+                    for (var i=pos++; i < paraula.length; i++) {
+                        if (paraula[i] === letra) {
+                            Paraula[i] = letra;                                           
+                }
+                }
+                    document.getElementById("paraula").innerHTML = Paraula;
+                    document.getElementById("miau").play();
+               } else {
+                    // if (letra.indexOf(letra) !== -1) {     }
+                    window.alert("has fallado");
+                    letras = letras + letra + " ";
+                    document.getElementById("letras").innerHTML= letras;
+                    vides=vides-1;
+                    document.getElementById("vides").innerHTML= vides;
+                    document.getElementById("boomcloud").play();
+                    MostrarImg();
+                }           
+                // Comprovam si has perdido o has ganado.
+                  if (paraula.length >= 14){
+                      window.alert("has ganado");
+                      document.getElementById("cheer").play();
+                      AturarTot();
+                    }   
+                  if (vides <= 0) {
+                    windows.alert("has perdido");
+                    document.getElementById("catfight").play();
+                    AturarTot();
+                    }                               
+                }   
+               
+            //Deshabilitam tant <input id="letra" com <button.
+            function AturarTot() {
+                window.alert("AturarTot");
+                document.getElementById("letras").disabled=true;  
+                document.getElementById("button").disabled=true; 
+                }
+            function AmagaImg() {
+                document.getElementById("ahorcado_6").hidden = true;
+                document.getElementById("ahorcado_5").hidden = true;
+                document.getElementById("ahorcado_4").hidden = true;
+                document.getElementById("ahorcado_3").hidden = true;
+                document.getElementById("ahorcado_2").hidden = true;
+                document.getElementById("ahorcado_1").hidden = true;
+                document.getElementById("ahorcado_0").hidden = true;
+                document.getElementById("ahorcado").hidden = true;
+                
+                document.getElementById("paraula").innerHTML = paraula;
+                document.body.style.display = "block";
+                
+                AlaWeb_SQLite("ca");
+            }           
+            function MostrarImg() {
+                switch(vides) {
+                    case 6:
+                        document.getElementById("ahorcado_6").hidden = false;
+                        break;               
+                    case 5:
+                        document.getElementById("ahorcado_5").hidden = false;
+                        document.getElementById("ahorcado_6").hidden = true;
+                        break;  
+                    case 4:
+                        document.getElementById("ahorcado_4").hidden = false;
+                        document.getElementById("ahorcado_5").hidden = true;
+                        break;
+                    case 3:
+                        document.getElementById("ahorcado_3").hidden = false;
+                        document.getElementById("ahorcado_4").hidden = true;
+                        break;                       
+                    case 2:
+                        document.getElementById("ahorcado_2").hidden = false;
+                        document.getElementById("ahorcado_3").hidden = true;
+                        break;
+                    case 1:
+                        document.getElementById("ahorcado_1").hidden = false;
+                        document.getElementById("ahorcado_2").hidden = true;
+                        break;
+                    case 0:
+                        document.getElementById("ahorcado_0").hidden = false;
+                        document.getElementById("ahorcado_1").hidden = true;
+                        break;
+                }           
+            } 
+            function timer(){
+		seconds=seconds+1;
+		document.getElementById("counter").innerHTML=seconds;                
+	    }
+            
+   // Canviam els diferents literals de la GUI segons l'idioma
+    function CanviarIdioma(IdIdioma) {
+
+        AlaWeb_SQLite(IdIdioma);
+        Idioma = Idiomes.find(Idioma => Idioma.IdIdioma == IdIdioma);
+       
+        /*
+        document.title = Idioma.Titol;
+        */
+
+        document.getElementById("Versio").innerHTML = Idioma.Versio;
+        document.getElementById("letra").placeholder = Idioma.Input;
+        document.getElementById("button").innerHTML = Idioma.Comprovar;
+        document.getElementById("paraula").innerHTML = Idioma.Paraula;
+        document.getElementById("vides").innerHTML = Idioma.Vides;
+        document.getElementById("letras").innerHTML = Idioma.Lletres;
+        
+        /*       
+        document.getElementById("Sopes").innerHTML = Idioma.Sopes;
+        document.getElementById("button2").innerHTML = Idioma.Pista;                
+        document.getElementById("Moix").innerHTML = Idioma.Moix;
+        */
+
+        // Escull una nova paraula aleatòriament
+        window.alert("Nova paraula aleatòria / Nueva palabra aleatoria / New random word!");
+        // window.alert("[" + paraula + "]=[" + pista + "]");
+   }
+        
+    // Funció per carregar la base de dades penjat.db
+    function AlaWeb_SQLite(IdIdioma) {
+        window.alert("AlaWeb_SQLite IdIdioma = '" + IdIdioma + "'");
+        config = {
+            locateFile: filename => `/dist/${filename}`
+        };
+
+        // Recuperam de la base de dades els TextosGUI per tots els Idiomes
+        alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
+                SELECT * FROM TblTextosGUI;',
+        //    [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
+            [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
+        );
+    }
+
+    // Print data  
+    function Print_Data(res) {
+        for (var i in res)
+        {
+           // console.log("row " + i);
+           // document.getElementById("res").innerHTML += "<br>";
+           for (var j in res[i])
+             {
+              // console.log(" " + res[i][j]);
+              // document.getElementById("res").innerHTML += res[i][j] + ", ";
+              window.alert("res[" + i + "][" +j + "] = " + res[i][j]);
+             }
+        }
+    }
+    
+    function SQL_TblTextosGUI(IdIdioma, IdIdioma1) {}
+        </script>
+    </head>
+    <body onload="AmagaImg();" style="background-image: url('img/Desert.png');
+            background-size: 640px 480px; background-repeat: no-repeat;">
+        
+        <h1 id="Versio">PROTOTIP JOC DEL PENJAT</h1>
+        <div class="topnav">
+            <a class="active" href="#home"></a>
+            <a href="#about"></a>
+            <a href="#contact"></a>
+        </div>
+        <input id="letra" type="text" placeholder="Escriu una letra minúscula">
+        <button id="button" type="button" onclick="comprovar()">Comprovar</button> 
+        
+            <h2 id="paraula">PARAULA</h2>
+        <br>
+        <div>-------</div> <button id="button2" type="button" onclick="Pista()">Pista</button>
+        <br>
+            <h2 id="vides">VIDES</h2>
+        <br>
+        <div>-------</div>
+        <br>
+            <h2 id="letras">LETRA</h2>
+        <br>
+        <div>-------</div>
+        <br>
+        <div>Crédits: <a href="https://prosselloe.wordpress.com/2022/11/22/el-joc-del-penjat-on-scratch/">El joc del penjat on Scratch</a>
+        </div>
+
+        <img src="img/disfraz3.png" alt="" id="disfraz"
+             style="width:86px;height:90px">
+        
+        
+        <button id="ca" style="height: 20px; width: 28px"     onclick="CanviarIdioma('ca')">
+                <img src="img/ca.png" alt="tra_ca" title="en Català"></button>
+        <button id="es" style="height: 20px; width: 28px"     onclick="CanviarIdioma('es')">
+                <img src="img/es.png" alt="tra_es" title="en Español"></button>
+        <button id="en" style="height: 20px; width: 28px"     onclick="CanviarIdioma('en')">
+                <img id="gb" src="img/gb.png" alt="tra_en" title="in English"></button>
+                <img src="img/fr.png" alt="" id="frances"
+                     style="width:20px ;height:20px ">  
+<!--        
+        <a href="https://melodic--dolphin--d7ae29-netlify-app.translate.goog/versioprealpha?_x_tr_sl=ca&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=wapp"><img src="img/es.png" alt="" id="español"
+             style="width:20px ;height:20px ">            
+        <a href="https://melodic--dolphin--d7ae29-netlify-app.translate.goog/versioprealpha?_x_tr_sl=ca&_x_tr_tl=en&_x_tr_hl=es&_x_tr_pto=wapp"><img src="img/gb.png" alt="" id="ingles"
+             style="width:20px ;height:20px "></a>        
+        <a href="https://melodic--dolphin--d7ae29-netlify-app.translate.goog/versioprealpha?_x_tr_sl=ca&_x_tr_tl=it&_x_tr_hl=es&_x_tr_pto=wapp"><img src="img/it.png" alt="" id="italiano"
+             style="width:20px ;height:20px ">
+-->
+
+        <img src="img/keyboard.png" alt="" id="keyboard"
+             style="width:20px ;height:20px ">
+        <div id="imatges">
+        <img src="img/ahorcado_0.png" id="ahorcado_0"
+             width="280" height="270"
+                onmouseover="ahorcado_0();"/>
+        <img src="img/ahorcado_1.png" id="ahorcado_1"
+             width="280" height="270"
+                onmouseover="ahorcado_1();"/>
+        <img src="img/ahorcado_2.png" id="ahorcado_2"
+             width="280" height="270"
+                onmouseover="alert('Acabas de pasar el ratón por encima'+'ahorcado_2');"/>
+        <img src="img/ahorcado_3.png" id="ahorcado_3"
+             width="280" height="270"
+                onmouseover="ahorcado_3();"/>
+        <img src="img/ahorcado_4.png" id="ahorcado_4"
+             width="280" height="270"
+                onmouseover="ahorcado_4();"/>
+        <img src="img/ahorcado_5.png" id="ahorcado_5"
+             width="280" height="270"
+                onmouseover="ahorcado_5();"/>
+        <img src="img/ahorcado_6.png" id="ahorcado_6"
+             width="280" height="270"
+                onmouseover="ahorcado_6();"/>
+        <a href="img/ahorcado.jpg">
+            <img src="img/ahorcado.jpg" id="ahorcado" style="width:234hpx;height:270hpx;"></a>
+    </div>
+    <div id="audio">
+        <audio id="miau"><source src="aud/miau.mp3" type="audio/mpeg"></audio>       
+        <audio id="boomcloud"><source src="aud/boom_cloud.mp3" type="audio/mpeg"></audio>
+        <audio id="cheer"><source src="aud/cheer.mp3" type="audio/mpeg"></audio>
+        <audio id="catfight"><source src="aud/cat-fight.mp3" type="audio/mpeg"></audio>
+        <audio id="mystery"><source src="aud/mystery.mp3" type="audio/mpeg"></audio>
+    </div>
+    <div id="Teclat" translate="no">
+            <table><strong>
+                <tr>
+                  <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="q" onclick="document.getElementById('letra').value = 'q';">q</button>
+                    <button id="w" onclick="document.getElementById('letra').value = 'w';">w</button>
+                    <button id="e" onclick="document.getElementById('letra').value = 'e';">e</button>
+                    <button id="r" onclick="document.getElementById('letra').value = 'r';">r</button>
+                    <button id="t" onclick="document.getElementById('letra').value = 't';">t</button>
+                    <button id="y" onclick="document.getElementById('letra').value = 'y';">y</button>
+                    <button id="u" onclick="document.getElementById('letra').value = 'u';">u</button>
+                    <button id="i" onclick="document.getElementById('letra').value = 'i';">i</button>
+                    <button id="o" onclick="document.getElementById('letra').value = 'o';">o</button>
+                    <button id="p" onclick="document.getElementById('letra').value = 'p';">p</button>
+                    <!--
+                    <button id="agut" onclick="alert('Sense vocals accentuades!');" 
+                            style="color:red" title="Accent Agut">´</button>
+                    -->
+                    <button id="retro" onclick="Retroces();;" title="BACKSPACE">←</button>
+                  </td>          
+                </tr>
+                <tr>
+                  <td>
+                    &nbsp;&nbsp;
+                    <button id="a" onclick="document.getElementById('letra').value = 'a';">a</button>
+                    <button id="s" onclick="document.getElementById('letra').value = 's';">s</button>
+                    <button id="d" onclick="document.getElementById('letra').value = 'd';">d</button>
+                    <button id="f" onclick="document.getElementById('letra').value = 'f';">f</button>
+                    <button id="g" onclick="document.getElementById('letra').value = 'g';">g</button>
+                    <button id="h" onclick="document.getElementById('letra').value = 'h';">h</button>
+                    <button id="j" onclick="document.getElementById('letra').value = 'j';">j</button>
+                    <button id="k" onclick="document.getElementById('letra').value = 'k';">k</button>
+                    <button id="l" onclick="document.getElementById('letra').value = 'l';">l</button>
+                    <button id="ñ" onclick="document.getElementById('letra').value = 'ñ';" 
+                            style="color:blue">ñ</button>
+                    <!--
+                    <button id="dieresi" onclick="alert('Sense vocals amb dièrsi!');" 
+                            style="color:red" title="Dièresi">¨</button>
+                    -->
+                    <button id="intro" onclick="Comprovar();" title="ENTER">┘</button>
+                  </td>          
+                </tr>
+                <tr>
+                  <td>
+                    <button id="shift" onclick="alert('Només lletres minúscules!');" 
+                            style="color:red" title="SHIFT">↑</button>
+                    <button id="z" onclick="document.getElementById('letra').value = 'z';">z</button>
+                    <button id="x" onclick="document.getElementById('letra').value = 'x';">x</button>
+                    <button id="c" onclick="document.getElementById('letra').value = 'c';">c</button>
+                    <button id="v" onclick="document.getElementById('letra').value = 'v';">v</button>
+                    <button id="b" onclick="document.getElementById('letra').value = 'b';">b</button>
+                    <button id="n" onclick="document.getElementById('letra').value = 'n';">n</button>
+                    <button id="m" onclick="document.getElementById('letra').value = 'm';">m</button>
+                    <button id="ç" onclick="document.getElementById('letra').value = 'ç';" 
+                            style="color:blue">ç</button>
+                    <button id="volat" onclick="document.getElementById('letra').value = '·';" 
+                            style="color:blue" title="Punt Volat">·</button>
+                    <button id="guio" onclick="document.getElementById('letra').value = '-';" 
+                            style="color:blue" title="Guionet">-</button>
+                    <!--
+                    <button id="greu" onclick="alert('Sense vocals accentuades!');" 
+                            style="color:red" title="Accent Greu">`</button>
+                    -->
+                  </td>          
+                </tr>
+            </strong></table>
+        </div>
+    </body>
+</html>
+<!--
+mides del moix style="width:86px;height:90px"
+if !confirm('Anam a la quinta forca?')
+document.body.style.backgroundImage = "url('img/fondo1.png')";
+letra[7 - 6] = letra;
+ Paraula[pos] = letra;
+                    }else{
+                    Lletres[7 - vides] =letra;
+                }
+<button id="teclat" onclick="document.getElementById('teclat').hidden =
+!document.getElementById('teclat').hidden; title="mostra o amaga">
+<img src="img/keyboard.png" alt="teclat">
+</button>
+
+<button id="sons" title="On / Off" 
+Onclick="document.getElementById('off').hidden=
+         document.getElementById('on').hidden;
+         document.getElementById('on').hidden=
+         !document.getElementById('off').hidden=>
+         <img src="img/on.png" id="on">
+         <img src="img/off.png" id="off" hidden>
+         </button>
+
+setInterval(timer,1000);
+
+
+
+-->
