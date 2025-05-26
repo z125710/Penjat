@@ -39,14 +39,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
     }
            #imatges { position:relative; top:-450px; left:318px; }
            #disfraz { position:relative; top:-190px; left:180px; }
-           #aleman  { position:relative; top:-500px; left:343px; }
-           #catalan { position:relative; top:-500px; left:345px; }
-           #es      { position:relative; top:-500px; left:347px; }
-           #en      { position:relative; top:-500px; left:349px; }
-           #ca      { position:relative; top:-500px; left:351px; }
-           #italiano { position:relative; top:-500px; left:353px; }
+           #es      { position:relative; top:-501px; left:330px; }
+           #en      { position:relative; top:-501px; left:334px; }
+           #ca      { position:relative; top:-501px; left:338px; }
            #keyboard { position:relative; top:-500px; left:355px; }
            #Button2 { position:relative; top:-3000px; left:150px; }
+           #Urlpistes { position:relative; top:-100px; left:0px; }
+           #segons { position:relative; top:-400px; left:300px; }
            
            
         </style>
@@ -273,7 +272,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
                     document.getElementById("vides").innerHTML= vides;
                     document.getElementById("boomcloud").play();
                     MostrarImg();
-                }           
+                }      
+                
                 // Comprovam si has perdido o has ganado.
                   if (paraula.length >= 14){
                       window.alert("has ganado");
@@ -339,10 +339,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
                         break;
                 }           
             } 
-            function timer(){
-		seconds=seconds+1;
-		document.getElementById("counter").innerHTML=seconds;                
-	    }
+            // Comptador de temps al joc.
+            var seconds = 0;
+            function timer() {
+            seconds = seconds + 1;
+            document.getElementById("Segons").innerHTML = seconds;
+            }
+            setInterval(timer, 1000);
             
    // Canviam els diferents literals de la GUI segons l'idioma
     function CanviarIdioma(IdIdioma) {
@@ -442,8 +445,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
                 <img src="img/es.png" alt="tra_es" title="en Español"></button>
         <button id="en" style="height: 20px; width: 28px"     onclick="CanviarIdioma('en')">
                 <img id="gb" src="img/gb.png" alt="tra_en" title="in English"></button>
-                <img src="img/fr.png" alt="" id="frances"
-                     style="width:20px ;height:20px ">  
+                  
 <!--        
         <a href="https://melodic--dolphin--d7ae29-netlify-app.translate.goog/versioprealpha?_x_tr_sl=ca&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=wapp"><img src="img/es.png" alt="" id="español"
              style="width:20px ;height:20px ">            
@@ -452,6 +454,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <a href="https://melodic--dolphin--d7ae29-netlify-app.translate.goog/versioprealpha?_x_tr_sl=ca&_x_tr_tl=it&_x_tr_hl=es&_x_tr_pto=wapp"><img src="img/it.png" alt="" id="italiano"
              style="width:20px ;height:20px ">
 -->
+
+        
 
         <img src="img/keyboard.png" alt="" id="keyboard"
              style="width:20px ;height:20px ">
